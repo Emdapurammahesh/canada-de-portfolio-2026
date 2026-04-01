@@ -32,7 +32,41 @@ This repository contains 4 distinct data engineering projects demonstrating diff
 
 ---
 
-## 📂 Project 2: E-Commerce Sales Processor (File Ingestion) - [IN PROGRESS]
-**Goal:** Automateing the cleaning and loading of "dirty" CSV sales drops.
-- **Techniques:** Pandas for Data Profiling, Duplicate Removal, and NULL handling.
-- **Status:** Currently building the transformation logic.
+## 📂 Project 2: E-Commerce Sales Processor (File Ingestion) 
+
+# End-to-End Medallion Data Pipeline with PySpark
+
+## 📌 Project Overview
+This project implements a professional **Medallion Architecture** data pipeline using **PySpark**. It automates the transition of raw e-commerce sales data into business-ready insights. The system is designed to be **Cloud-Ready**, utilizing environment-agnostic configurations and high-performance storage formats.
+
+## 🏗️ Architecture: The Medallion Layers
+1. **Bronze (Raw):** Ingests raw `CSV` data exactly as it arrives from source systems.
+2. **Silver (Cleaned):** De-duplicates records, handles missing values (Nulls), and converts data to **Apache Parquet** for optimized storage.
+3. **Gold (Analytics):** Aggregates data to calculate key business metrics like Total Revenue and Units Sold per product.
+
+## 🛠️ Tech Stack
+* **Language:** Python 3.14
+* **Engine:** Apache Spark 4.1.1 (PySpark)
+* **Environment:** Java 17 (OpenJDK)
+* **Format:** Parquet (Snappy Compressed)
+* **Orchestration:** Custom Python Wrapper with Logging
+
+## 🚀 Key Features
+* **Custom Orchestration:** A `main_pipeline.py` script that manages job execution, tracks processing time, and handles errors.
+* **Environment Decoupling:** All file paths and system metadata are stored in a centralized `config.json`, allowing the pipeline to move between Local, Dev, and Prod environments without code changes.
+* **Data Quality Logic:** Automated removal of duplicate transaction IDs and filtering of incomplete financial records.
+* **Storage Optimization:** Transitioned from row-based CSV to columnar-based Parquet, reducing storage footprint and increasing query speed.
+
+## 📂 Project Structure
+```text
+.
+├── main_pipeline.py        # Master Orchestrator (Entry Point)
+├── config.json             # Environment & Path Configurations
+├── data_lake/              # Simulated Data Lake
+│   ├── 01_bronze_raw/      # Raw CSV Landings
+│   ├── 02_silver_cleaned/  # Cleaned Parquet Files
+│   └── 03_gold_analytics/  # Aggregated Business Tables
+├── src/pyspark_jobs/       # Modular PySpark Logic
+│   ├── ingest_bronze_to_silver.py
+│   └── aggregate_silver_to_gold.py
+└── venv/                   # Isolated Python Environment
