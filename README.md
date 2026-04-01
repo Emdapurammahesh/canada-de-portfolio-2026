@@ -1,4 +1,4 @@
-# 🚀 Data Engineering Portfolio: 4 End-to-End Pipelines
+# Data Engineering Portfolio: 4 End-to-End Pipelines
 
 This repository contains 4 distinct data engineering projects demonstrating different ingestion techniques, data processing styles, and storage solutions.
 
@@ -33,6 +33,6 @@ This repository contains 4 distinct data engineering projects demonstrating diff
 ---
 
 ## 📂 Project 2: E-Commerce Sales Processor (File Ingestion) - [IN PROGRESS]
-**Goal:** Automate the cleaning and loading of "dirty" CSV sales drops.
+**Goal:** Automateing the cleaning and loading of "dirty" CSV sales drops.
 - **Techniques:** Pandas for Data Profiling, Duplicate Removal, and NULL handling.
 - **Status:** Currently building the transformation logic.
